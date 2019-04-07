@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Welcome to LinearLeastSquares &mdash; LLS 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="LLS 0.1 documentation" href="#" />
+    <link rel="next" title="The Math Behind LLS" href="math.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="math.html" title="The Math Behind LLS"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">LLS 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="welcome-to-linearleastsquares">
+<h1>Welcome to LinearLeastSquares<a class="headerlink" href="#welcome-to-linearleastsquares" title="Permalink to this headline">¶</a></h1>
+<p>LinearLeastSquares, or LLS for short, is a library that makes it easy to
+formulate and solve least squares optimization problems with linear equality
+constraints. With LLS, these types of problems can be created using a
+natural syntax that mirrors standard mathematical notation.</p>
+<p>For example, the classic problem of finding the least norm solution to an
+underdetermined system can be easily setup and solved with the following code:</p>
+<div class="highlight-none"><div class="highlight"><pre>using LinearLeastSquares
+
+# Problem data
+p = 20;
+n = 30;
+C = randn(p, n);
+d = randn(p, 1);
+
+# Build the components of the problem
+x = Variable(n);
+objective = sum_squares(x);
+constraint = C * x == d;
+
+# Solve the problem
+optimal_value = minimize!(objective, constraint)
+</pre></div>
+</div>
+<p>This example showcases the Julia implementation of LLS; other
+implementations include Python.</p>
+<div class="section" id="in-depth-docs">
+<h2>In Depth Docs<a class="headerlink" href="#in-depth-docs" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="math.html">The Math</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="math.html#linearly-constrained-least-squares">Linearly Constrained Least Squares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math.html#solving-lcls">Solving LCLS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="julia_tutorial.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="julia_tutorial.html#installing-lls">Installing LLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia_tutorial.html#variables-and-constants">Variables and Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia_tutorial.html#affine-expressions">Affine Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia_tutorial.html#linear-equality-constraints">Linear Equality Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia_tutorial.html#the-solve-function">The <tt class="docutils literal"><span class="pre">solve!</span></tt> Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia_tutorial.html#sum-of-squares-expressions">Sum of Squares Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia_tutorial.html#the-minimize-function">The <tt class="docutils literal"><span class="pre">minimize!</span></tt> Function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="julia_examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="julia_examples.html#regression">Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia_examples.html#control">Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia_examples.html#image-processing">Image Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia_examples.html#machine-learning">Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia_examples.html#time-series-analysis">Time Series Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to LinearLeastSquares</a><ul>
+<li><a class="reference internal" href="#in-depth-docs">In Depth Docs</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="math.html"
+                        title="next chapter">The Math Behind LLS</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="math.html" title="The Math Behind LLS"
+             >next</a> |</li>
+        <li><a href="#">LLS 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, David Zeng, Keegan Go, Karanveer Mohan.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
